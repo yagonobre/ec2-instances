@@ -3,7 +3,7 @@
 curl -Lo hack/instances.json https://www.ec2instances.info/instances.json
 
 if [[ `git status --porcelain` ]]; then
-	  git checkout master
+    git checkout master
     go generate
 
     git config user.name "Batata.Bot"
@@ -13,7 +13,7 @@ if [[ `git status --porcelain` ]]; then
     git add hack/instances.json
     git commit -m "Update instances info"
 
-		git fetch --tags
+    git fetch --tags
     VERSION=`git tag -l --sort -version:refname | head -n 1 | awk -F. '{$NF+=1; OFS="."; print $0}'| sed 's/ /./g'`
     git tag ${VERSION}
 
