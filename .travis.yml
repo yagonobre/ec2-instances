@@ -1,0 +1,6 @@
+language: go
+jobs:
+  include:
+    - stage: update instances info
+      script:
+        - ./hack/update-instances.sh
