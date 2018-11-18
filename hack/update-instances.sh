@@ -13,7 +13,7 @@ if [[ `git status --porcelain` ]]; then
     git add hack/instances.json
     git commit -m "Update instances info"
 
-    VERSION=`git describe --tags $(git rev-list --tags --max-count=1) | awk -F. '{$NF+=1; OFS="."; print $0}'| sed 's/ /./g'`
+    VERSION=`git tag -l --sort -version:refname | head -n 1 | awk -F. '{$NF+=1; OFS="."; print $0}'| sed 's/ /./g'`
     git tag ${VERSION}
 
     git remote add github https://${GH_TOKEN}@${GH_REF} > /dev/null 2>&1
